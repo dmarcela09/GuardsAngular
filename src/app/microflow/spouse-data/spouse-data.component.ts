@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getCurrentPath, savePath } from '../../utils/navegation';
+import { getCurrentPath, savePathStatus } from '../../utils/navegation';
 
 @Component({
   selector: 'app-spouse-data',
@@ -9,16 +9,15 @@ import { getCurrentPath, savePath } from '../../utils/navegation';
 export class SpouseDataComponent {
 
   public path = '/microflow/spouse-data';
+  public status = false;
 
-  ngOnInit() {
-    getCurrentPath(this.path);
+  ngOnInit(){
+    localStorage.clear();
+    getCurrentPath(this.path)
   }
   changeStatusPath() {
-    console.log(this.path)
-    console.log('entroPage')
-    const statusPath = true;
-    savePath(statusPath);
-    localStorage.removeItem('status');
+    this.status = false;
+    savePathStatus(this.status);
   }
 
 }

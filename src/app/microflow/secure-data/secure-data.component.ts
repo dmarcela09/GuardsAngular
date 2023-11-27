@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getCurrentPath, savePath } from '../../utils/navegation';
+import { savePathStatus, getCurrentPath } from '../../utils/navegation';
 
 @Component({
   selector: 'app-secure-data',
@@ -9,14 +9,15 @@ import { getCurrentPath, savePath } from '../../utils/navegation';
 export class SecureDataComponent {
 
   public path = '/microflow/secure-data';
+  public status = false;
 
-  ngOnInit() {
-    getCurrentPath(this.path);
+  ngOnInit(){
+    localStorage.clear();
+    getCurrentPath(this.path)
   }
   changeStatusPath() {
-    const statusPath = true;
-    savePath(statusPath);
-    localStorage.removeItem('status');
+    this.status = true;
+    savePathStatus(this.status);
   }
 
 }

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { getCurrentPath } from './utils/navegation';
-
-const navegationMap = require("../app/data/navegation-map.json");
+import { getCurrentPath, savePathStatus } from './utils/navegation';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +8,20 @@ const navegationMap = require("../app/data/navegation-map.json");
 })
 export class AppComponent {
   title = 'spike-guards';
+  
   public path = '/'
+  public status = false;
 
-  ngOnInit() {
-    getCurrentPath(this.path);
+
+  ngOnInit(){
+
+    getCurrentPath(this.path)
+  }
+  changeStatusPath() {
+    let element = document.querySelector<HTMLElement>('.button')!;
+    this.status = true;
+    savePathStatus(this.status);
+    element.style.display = 'none';
   }
 
 }

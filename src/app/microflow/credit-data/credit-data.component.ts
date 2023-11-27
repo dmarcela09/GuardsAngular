@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getCurrentPath, savePathStatus } from 'src/app/utils/navegation';
 
 @Component({
   selector: 'app-credit-data',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class CreditDataComponent {
 
+  public path = '/microflow/credit-data';
+  public status = false;
+
+  ngOnInit(){
+    localStorage.clear();
+    getCurrentPath(this.path)
+  }
+  changeStatusPath() {
+    this.status = false;
+    savePathStatus(this.status);
+  }
 }

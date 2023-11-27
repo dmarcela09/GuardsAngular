@@ -8,6 +8,7 @@ import { EconomicActivityComponent } from './microflow/economic-activity/economi
 import { SpouseDataComponent } from './microflow/spouse-data/spouse-data.component';
 import { CreditLineComponent } from './microflow/credit-line/credit-line.component';
 import { CreditDataComponent } from './microflow/credit-data/credit-data.component';
+import { FlowGuard } from './guard/flow.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { CreditDataComponent } from './microflow/credit-data/credit-data.compone
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ FlowGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
