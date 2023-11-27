@@ -1,0 +1,41 @@
+{
+    "customer":[
+        {
+            "previous": "/",
+            "path": "/",
+            "next": "/microflow/secure-data",
+            "status": "true"
+        },
+        {
+            "previous": "/",
+            "path": "/microflow/secure-data",
+            "next": "/microflow/activity",
+            "status": "true"
+        },
+        {
+            "previous": "/microflow/secure-data",
+            "path": "/microflow/activity",
+            "next": "/microflow/spouse-data",
+            "status": "false"
+        },        
+        {
+            "previous": "/microflow/activity",
+            "path": "/microflow/spouse-data",
+            "next": "/microflow/credit-line",
+            "status": "false"
+        },
+        {
+            "previous": "/microflow/spouse-data",
+            "path": "/microflow/credit-line",
+            "next": "/microflow/credit-data",
+            "status": "false"
+        },
+        {
+            "previous": "/microflow/credit-line",
+            "path": "/microflow/credit-data",
+            "next": "/",
+            "status": "false"
+        }
+
+    ]
+}
