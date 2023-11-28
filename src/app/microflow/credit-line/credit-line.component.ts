@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { getCurrentPath, savePathStatus } from 'src/app/utils/navegation';
+import { getCurrentPath, savePathStatus, validateRoute } from 'src/app/utils/navegation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-credit-line',
@@ -8,12 +9,17 @@ import { getCurrentPath, savePathStatus } from 'src/app/utils/navegation';
 })
 export class CreditLineComponent {
 
+  constructor(private route: Router){}
   public path = '/microflow/credit-line';
   public status = false;
 
   ngOnInit(){
     localStorage.clear();
-    getCurrentPath(this.path)
+    const currentRoute = getCurrentPath(this.path);
+    let goToPath = validateRoute(currentRoute);
+    if(!goToPath){
+      this.route.navigate(['/']);
+    }
   }
   changeStatusPath() {
     this.status = false;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { savePathStatus, getCurrentPath } from '../../utils/navegation';
+import { savePathStatus, getCurrentPath, validateRoute } from '../../utils/navegation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-secure-data',
@@ -8,12 +9,18 @@ import { savePathStatus, getCurrentPath } from '../../utils/navegation';
 })
 export class SecureDataComponent {
 
+  constructor(private route: Router){}
+  
   public path = '/microflow/secure-data';
   public status = false;
 
   ngOnInit(){
     localStorage.clear();
-    getCurrentPath(this.path)
+    const currentRoute = getCurrentPath(this.path);
+    let goToPath = validateRoute(currentRoute);
+    if(!goToPath){
+      this.route.navigate(['/']);
+    }
   }
   changeStatusPath() {
     this.status = true;

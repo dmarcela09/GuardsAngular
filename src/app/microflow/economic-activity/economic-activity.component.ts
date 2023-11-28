@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { getCurrentPath, savePathStatus } from '../../utils/navegation';
+import { getCurrentPath, savePathStatus, validateRoute } from '../../utils/navegation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-economic-activity',
@@ -8,12 +9,17 @@ import { getCurrentPath, savePathStatus } from '../../utils/navegation';
 })
 export class EconomicActivityComponent {
 
+  constructor(private route: Router){}
   public path = '/microflow/activity';
   public status = false;
 
   ngOnInit(){
     localStorage.clear();
-    getCurrentPath(this.path)
+    const currentRoute = getCurrentPath(this.path);
+    let goToPath = validateRoute(currentRoute);
+    if(!goToPath){
+      this.route.navigate(['/']);
+    }
   }
   changeStatusPath() {
     this.status = true;

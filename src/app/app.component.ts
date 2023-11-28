@@ -14,14 +14,23 @@ export class AppComponent {
 
 
   ngOnInit(){
-
-    getCurrentPath(this.path)
+    console.log('HOLAAAAAAA')
+    localStorage.clear();
+    this.showButton(true);
+    debugger
+    getCurrentPath(this.path);
+    console.log('landing', getCurrentPath(this.path))
   }
   changeStatusPath() {
-    let element = document.querySelector<HTMLElement>('.button')!;
     this.status = true;
     savePathStatus(this.status);
-    element.style.display = 'none';
+    this.showButton(false);
+  }
+  showButton(status){
+    let element = document.querySelector<HTMLElement>('.button')!;
+    status ?
+      element.style.display = 'flex':
+      element.style.display = 'none'
   }
 
 }
